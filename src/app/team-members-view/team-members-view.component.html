@@ -1,0 +1,4 @@
+<div *ngFor="let data of employeesData">
+    <div class="description">{{data.description}}</div>
+    <app-employees-details [employees]="data.employees" class="employees"></app-employees-details>
+</div>

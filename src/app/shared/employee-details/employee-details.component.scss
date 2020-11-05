@@ -1,0 +1,25 @@
+
+@import "../../../styles.scss";
+
+.employee {
+    &-img {
+    margin: -10px 0px 0px -20px;
+        &_container-small {
+            width: 350px;
+            height: 350px;
+            overflow: hidden;
+        }
+    }
+    &-name {
+        font-weight: bold;
+    }
+    &-email {
+        color: $light-blue;
+    }
+    &-info {
+        padding: 20px;
+        div {
+            padding: 5px;
+        }
+    }
+}

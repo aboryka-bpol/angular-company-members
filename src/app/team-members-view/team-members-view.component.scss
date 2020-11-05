@@ -1,0 +1,13 @@
+.employees {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+.description {
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
