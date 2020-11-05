@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IEmployeeData } from '../interfaces/employee';
+import { BehaviorSubject } from 'rxjs';
+import { Team } from '../models/Team.model';
 
 @Component({
   selector: 'app-team-members-view',
@@ -8,13 +9,11 @@ import { IEmployeeData } from '../interfaces/employee';
   styleUrls: ['./team-members-view.component.scss']
 })
 export class TeamMembersViewComponent implements OnInit {
-  public employeesData: IEmployeeData[];
+  public employeesData$ = new BehaviorSubject<Team[]>([]);
 
-  constructor(private route: ActivatedRoute) {
-    this.route.data.subscribe(({data}) => this.employeesData = data);
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-
+    this.route.data.subscribe(({data}) => this.employeesData$.next(data));
   }
 }

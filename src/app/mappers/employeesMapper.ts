@@ -1,8 +1,13 @@
-import { IEmployeeData, IEmployeeImages } from '../interfaces/employee';
+import { IEmployeeResponseData, IEmployeeResponsePerson } from '../interfaces/employee';
+import { Images } from '../models/Images.model';
+import { Team } from '../models/Team.model';
 
-const mapEmployeesData = (acc, { imageUrl, block: { title, description, link, text }}) => {
+export const mapEmployeesData = (
+    acc: IEmployeeResponsePerson[],
+    { imageUrl, block: { title, description, link, text }}: IEmployeeResponsePerson
+    ) => {
     const { w200, w400, w1080, w1920, w2560 } = imageUrl;
-    const images: IEmployeeImages = {
+    const images: Partial<Images> = {
         verySmall: w200,
         small: w400,
         medium: w1080,
@@ -23,7 +28,7 @@ const mapEmployeesData = (acc, { imageUrl, block: { title, description, link, te
 };
 
 
-export default function({ data }: any): IEmployeeData[] {
+export default function(data: IEmployeeResponseData[]): Partial<Team[]> {
     return data.reduce((acc, { attributes }) => {
         const { memberCards, title } = attributes;
         const employeesDetails = Object.values(memberCards);

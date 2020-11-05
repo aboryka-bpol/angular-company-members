@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IEmployee } from 'src/app/interfaces/employee';
+import { Employee } from 'src/app/models/Employee.model';
 
 @Component({
   selector: 'app-employee-details',
@@ -7,7 +7,7 @@ import { IEmployee } from 'src/app/interfaces/employee';
   styleUrls: ['./employee-details.component.scss']
 })
 export class EmployeeDetailsComponent implements OnInit {
-  @Input() employee: IEmployee;
+  @Input() employee: Employee;
   @Input() imageSize: string;
   @Input() imageContainerClass: string;
   constructor() { }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IEmployee } from 'src/app/interfaces/employee';
+import { Employee } from 'src/app/models/Employee.model';
+
 
 @Component({
   selector: 'app-employees-details',
@@ -7,7 +8,7 @@ import { IEmployee } from 'src/app/interfaces/employee';
   styleUrls: ['./employees-details.component.scss']
 })
 export class EmployeesDetailsComponent implements OnInit {
-  @Input() employees: IEmployee[];
+  @Input() employees: Employee[];
   constructor() { }
 
   ngOnInit(): void {

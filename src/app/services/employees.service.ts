@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { IEmployeeData } from '../interfaces/employee';
+import { map, scan } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { IEmployeeResponse } from '../interfaces/employee';
 import employeesMapper from '../mappers/employeesMapper';
+import { Team } from '../models/Team.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,15 @@ export class EmployeesService {
 
   private URL = `${environment.API_URL}task/index.json`;
 
-  public getEmployees(): Observable<IEmployeeData[]> {
-    return this.http.get<any>(this.URL).pipe(
-      map(employeesMapper)
+  public getEmployees(): Observable<Team[]> {
+    return this.http.get<IEmployeeResponse>(this.URL).pipe(
+      map(({data}) => data),
+      map(employeesMapper),
+      scan((acc, result) => ([
+        ...acc,
+        ...result.map(res => new Team().deserialize(res))
+      ]))
     );
   }
-
 
 }
