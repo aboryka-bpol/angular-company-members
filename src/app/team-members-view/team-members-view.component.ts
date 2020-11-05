@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Team } from '../models/Team.model';
 
 @Component({
@@ -9,11 +10,13 @@ import { Team } from '../models/Team.model';
   styleUrls: ['./team-members-view.component.scss']
 })
 export class TeamMembersViewComponent implements OnInit {
-  public employeesData$ = new BehaviorSubject<Team[]>([]);
+  public employeesData$: Observable<Team[]>;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.data.subscribe(({data}) => this.employeesData$.next(data));
+    this.employeesData$ = this.route.data.pipe(
+      map(({data}) => data)
+    );
   }
 }
