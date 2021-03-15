@@ -1,0 +1,4 @@
+<div *ngFor="let team of (team$ | async)">
+    <div class="description">{{team.description}}</div>
+    <app-team-members [members]="team.members" class="members"></app-team-members>
+</div>

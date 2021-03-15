@@ -1,0 +1,11 @@
+<div class="member">
+    <div [class]="imageContainerClass">
+        <img class="member-img" [src]="member?.images[imageSize]"/>
+    </div>
+    <div class="member-info">
+        <div class="member-name">{{member?.name}}</div>
+        <div class="member-profession">{{member?.profession}}</div>
+        <div class="member-email margin-top-15">{{member?.emailAddress}}</div>
+        <div class="member-phone">{{member?.phoneNumber}}</div>
+    </div>
+</div>

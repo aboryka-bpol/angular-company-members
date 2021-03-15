@@ -3,21 +3,19 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TeamMembersViewComponent } from './team-members-view/team-members-view.component';
-import { SharedModule } from './shared/shared.module';
+import { TeamModule } from './team/team.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TeamMembersViewComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    SharedModule
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [TeamModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
